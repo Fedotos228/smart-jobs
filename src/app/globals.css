@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+:root {
+  /* BASE */
+  --background: #ffffff;
+  --foreground: #1D1E1D;
+
+  /* MAIN */
+  --main: #F26822;
+  --light-bg: #F4F8FB;
+  --stroke-white: #E3E3E3;
+  --stroke-dark: #565656;
+
+  --light-bg: #F4F8FB;
+}
+
+@theme inline {
+  /* BASE */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  /* MAIN */
+  --color-main: var(--main);
+  --color-light-bg: var(--light-bg);
+  --color-stroke-white: var(--stroke-white);
+  --color-stroke-dark: var(--stroke-dark);
+  --color-light-bg: var(--light-bg);
+
+  /* FONT */
+  --font-sans: var(--font-onest);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Onest, sans-serif;
+}
+
+@layer utilities {
+  h1 {
+    @apply text-[36px] md:text-[52px] xl:text-[72px] text-white font-semibold leading-tight [&>span]:text-main;
+  }
+
+  h2 {
+    @apply text-[24px] md:text-[30px] xl:text-[36px] font-semibold leading-tight;
+  }
+
+  h3 {  
+    @apply text-[20px] font-semibold leading-tight;
+  }
+
+  h4 {
+    @apply text-[18px] font-semibold leading-tight;
+  }
+
+  h5 {
+    @apply text-[14px] font-semibold leading-tight;
+  }
+}
