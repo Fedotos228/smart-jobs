@@ -2,7 +2,10 @@ import { mongooseAdapter } from '@payloadcms/db-mongodb'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import path from 'path'
 import { buildConfig } from 'payload'
-import sharp from 'sharp'
+import type { SharpDependency } from 'payload'
+import _sharp from 'sharp'
+
+const sharp = _sharp as unknown as SharpDependency
 import { fileURLToPath } from 'url'
 import { Areas } from './collections/Areas'
 import { Countries } from './collections/Countries'
