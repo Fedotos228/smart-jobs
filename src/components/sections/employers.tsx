@@ -1,3 +1,4 @@
+import { getEmployersSection } from '@/libs/getSections'
 import Image from 'next/image'
 import Button from '../ui/button'
 import Paragraph from '../ui/paragraph'
@@ -6,9 +7,16 @@ import Container from '../utils/container'
 import { Icon } from '../utils/icons'
 import SectionHeading from '../utils/section-heading'
 
-const list: string[] = ['Pre-screened, interview-ready candidates', 'Full legal and compliance handling', 'Seamless integration into your team', 'Ongoing post-placement HR support']
+export default async function Employers({ locale = 'en' }: { locale?: string }) {
+  const data = await getEmployersSection(locale as 'en' | 'ro' | 'ru')
+  const list = data?.listItems?.map((i) => i.text) ?? []
+  const imgSrc = data?.image?.url ?? '/workers.png'
 
-export default function Employers() {
+  const subtitle = data?.subtitle
+  const heading = data?.heading
+  const headingSpan = data?.headingSpan
+  const applyNow = data?.applyNow
+
   return (
     <Section>
       <Container>
@@ -16,35 +24,35 @@ export default function Employers() {
           <div data-animate='fade-left' className='relative w-full h-64 sm:h-80 lg:h-93.5'>
             <div className='absolute inset-0 translate-y-2.5 -translate-x-2.5 bg-main w-full rounded-xl -z-10' />
             <Image
-              src={'/workers.png'}
+              src={imgSrc}
               alt='Workers with apply now button'
               width={600}
               height={374}
               className='w-full rounded-xl h-full object-cover'
             />
-            <Button asLink href='/contact' className='absolute bottom-8 left-1/2 -translate-x-1/2' >
-              Apply now
+            <Button asLink href='/contact' className='absolute bottom-8 left-1/2 -translate-x-1/2'>
+              {applyNow}
             </Button>
           </div>
 
           <div data-animate='fade-right'>
-            <SectionHeading subtitle='for employers'>
-              Looking for Qualified <br className='hidden md:block' />
-              Workforce?
+            <SectionHeading subtitle={subtitle}>
+              {heading} <br className='hidden md:block' />
+              {headingSpan}
             </SectionHeading>
             <Paragraph className='mt-3'>
-              Access vetted international talent pools. We handle the entire HR pipeline from sourcing to onboarding, including legal compliance, relocation logistics, and ongoing employee support.
+              {data?.paragraph}
             </Paragraph>
 
             <ul className='mt-6 space-y-4'>
               {list.map((item, i) => (
                 <li key={i} className='flex items-center gap-1.5'>
-                  <Icon name='check-circle' className='text-main' /> {item}</li>
+                  <Icon name='check-circle' className='text-main' /> {item}
+                </li>
               ))}
             </ul>
           </div>
         </div>
-
       </Container>
     </Section>
   )

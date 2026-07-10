@@ -60,7 +60,7 @@ export const areas: IArea[] = [
   },
   {
     name: 'Spa & wellness',
-    slug: 'Spa-wellness',
+    slug: 'spa-wellness',
     imageSrc: 'https://novalines-cdn.stellarsolutions.md/smartjobs/gifs/',
     iconSrc: '/areas/Spa.svg'
   },

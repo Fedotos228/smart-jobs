@@ -1,7 +1,13 @@
 import { cn } from '@/libs/cn'
 import Link from 'next/link'
-import { IContactCard } from '../sections/contact-info'
+import { IconName } from '../utils/icons'
 import { Icon } from '../utils/icons'
+
+export interface IContactCard {
+  title: string
+  items: { name: string; href: string }[]
+  icon: IconName
+}
 
 export default function ContactCard({ card, firstItem }: { card: IContactCard, firstItem: boolean }) {
   return (

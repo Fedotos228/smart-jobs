@@ -1,3 +1,4 @@
+import { withPayload } from '@payloadcms/next/withPayload'
 import type { NextConfig } from "next"
 
 const nextConfig: NextConfig = {
@@ -5,6 +6,9 @@ const nextConfig: NextConfig = {
     remotePatterns: [new URL('https://novalines-cdn.stellarsolutions.md/smartjobs/**')]
   },
   turbopack: {
+    resolveAlias: {
+      '@payload-config': './src/payload.config.ts',
+    },
     rules: {
       "*.svg": {
         loaders: [{ loader: "@svgr/webpack", options: { svgo: false } }],
@@ -12,6 +16,13 @@ const nextConfig: NextConfig = {
       },
     },
   },
+  webpack: (config) => {
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: [{ loader: '@svgr/webpack', options: { svgo: false } }],
+    })
+    return config
+  },
 }
 
-export default nextConfig
+export default withPayload(nextConfig)

@@ -21,7 +21,7 @@ export default function SectionHeading({
 }: {
   className?: string,
   align?: string,
-  subtitle: string
+  subtitle?: string
   children: React.ReactNode,
   spanColor?: string
 }) {

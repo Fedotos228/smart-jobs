@@ -5,15 +5,17 @@ import Hero from '@/components/sections/hero'
 import HowWorks from '@/components/sections/how-works'
 import Provide from '@/components/sections/provide'
 
-export default function Home() {
+export default async function Home({ params }: PageProps<'/[locale]'>) {
+  const { locale } = await params
+
   return (
     <main>
-      <Hero />
-      <HowWorks />
-      <Provide />
-      <Countries />
-      <Areas />
-      <Employers />
+      <Hero locale={locale} />
+      <HowWorks locale={locale} />
+      <Provide locale={locale} />
+      <Countries locale={locale} />
+      <Areas locale={locale} />
+      <Employers locale={locale} />
     </main>
-  );
+  )
 }

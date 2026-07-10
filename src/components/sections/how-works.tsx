@@ -1,47 +1,25 @@
+import { getHowWorksSection } from '@/libs/getSections'
 import Section from '../ui/section'
 import StepsCard from '../ui/steps-card'
 import Container from '../utils/container'
 import Grid from '../utils/grid'
-import { IconName } from '../utils/icons'
 import SectionHeading from '../utils/section-heading'
 
-export interface IStepsCard {
-  icon: IconName,
-  title: string,
-  description: string
-}
+export default async function HowWorks({ locale = 'en' }: { locale?: string }) {
+  const data = await getHowWorksSection(locale as 'en' | 'ro' | 'ru')
+  const steps = data?.steps ?? []
 
-const steps: IStepsCard[] = [
-  {
-    icon: 'note-pencil',
-    title: 'Needs Alignment',
-    description: 'We sign the collaboration agreement and deeply analyze your ideal candidate profile, mapping out the precise skills and competencies required for your business success.'
-  },
-  {
-    icon: 'exam',
-    title: 'Sourcing & Evaluation',
-    description: 'Our team identifies and assesses potential candidates using rigorous, well-defined practical tests. We focus on delivering specialized human resources to maximize company potential.'
-  },
-  {
-    icon: 'users',
-    title: 'Interview & Selection',
-    description: 'Following our pre-selection process, we organize targeted interviews for you to choose the perfect fit. If requested, we can arrange practical testing directly in their home country.'
-  },
-  {
-    icon: 'scroll',
-    title: 'Legal & Onboarding',
-    description: 'Once you select your team, you simply provide the basic paperwork. We fully manage the legal documentation process to ensure a smooth and compliant entry into Moldova.'
-  }
-]
+  const subtitle = data?.subtitle
+  const heading = data?.heading
+  const headingSpan = data?.headingSpan
 
-export default function HowWorks() {
   return (
     <Section topSpace id='how-it-works'>
       <Container>
         <div data-animate='fade-up'>
-          <SectionHeading className='mb-13' subtitle='how it works' align='center' spanColor='black'>
-            How We Secure Top Talent <br />
-            <span>for Your Business</span>
+          <SectionHeading className='mb-13' subtitle={subtitle} align='center' spanColor='black'>
+            {heading} <br />
+            <span>{headingSpan}</span>
           </SectionHeading>
         </div>
 
