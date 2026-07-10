@@ -1,7 +1,9 @@
 import { cn } from '@/libs/cn'
-import { IStepsCard } from '../sections/how-works'
+import type { IconName } from '../utils/icons'
 import { Icon } from '../utils/icons'
 import Paragraph from './paragraph'
+
+type IStepsCard = { icon: IconName; title: string; description: string }
 
 export default function StepsCard({
   card,

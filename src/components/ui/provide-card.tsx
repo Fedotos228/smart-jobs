@@ -1,6 +1,8 @@
-import { IProvideCard } from '../sections/provide'
+import type { IconName } from '../utils/icons'
 import { Icon } from '../utils/icons'
 import Paragraph from './paragraph'
+
+type IProvideCard = { icon: IconName; title: string; desc: string }
 
 export default function ProvideCard({ card }: { card: IProvideCard }) {
   return (

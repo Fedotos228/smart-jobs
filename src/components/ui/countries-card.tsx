@@ -1,6 +1,7 @@
 import Image from 'next/image'
-import { ICountriesCard } from '../sections/countries'
 import Paragraph from './paragraph'
+
+type ICountriesCard = { src: string; name: string }
 
 export default function da({ card }: { card: ICountriesCard }) {
   return (
