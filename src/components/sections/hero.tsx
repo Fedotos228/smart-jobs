@@ -21,7 +21,7 @@ export default async function Hero({ locale = 'en' }: { locale?: string }) {
       <Container className='relative h-full'>
         <div className='absolute top-1/2 -translate-y-1/2'>
           <h1 data-animate='fade-up' className='mb-3'>
-            {data?.title ?? 'Connecting global talent'}{data?.titleHighlight && <><br className='hidden md:block' /><span>{data.titleHighlight}</span></>}
+            {data?.title ?? 'Connecting global talent'}{data?.titleHighlight && <><br className='hidden md:block' />{' '}<span>{data.titleHighlight}</span></>}
           </h1>
           <p data-animate='fade-up' className='text-white/70 mb-8 md:mb-13.25 max-w-146'>
             {data?.subtitle}
