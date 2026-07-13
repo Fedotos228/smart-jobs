@@ -11,8 +11,5 @@ export const Media: CollectionConfig = {
       type: 'text',
     },
   ],
-  upload: {
-    filesRequiredOnCreate: false,
-    fileSizeLimit: 200 * 1024 * 1024, // 200 MB
-  },
+  upload: true,
 }
