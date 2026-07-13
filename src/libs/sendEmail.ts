@@ -18,8 +18,8 @@ const transporter = nodemailer.createTransport({
 })
 
 function buildConfirmationEmail(name: string, organization: string, phone: string, email: string, message: string) {
-  const siteUrl = process.env.SITE_URL ?? 'https://smartjobs.md'
-  const logoUrl = `${siteUrl}/logo-white.png`
+  const storage = process.env.BLOB_BASE_URL ?? 'https://pnitkv63t0k5bjwm.public.blob.vercel-storage.com'
+  const logoUrl = `${storage}/logo-white.png`
 
   const row = (label: string, value: string) =>
     value
@@ -92,7 +92,7 @@ function buildConfirmationEmail(name: string, organization: string, phone: strin
 
               <!-- CTA -->
               <div style="margin:36px 0;text-align:center;">
-                <a href="${siteUrl}"
+                <a href="${storage}"
                    style="display:inline-block;background-color:#F26822;color:#ffffff;
                           text-decoration:none;padding:14px 40px;border-radius:12px;
                           font-size:15px;font-weight:600;letter-spacing:0.02em;">
