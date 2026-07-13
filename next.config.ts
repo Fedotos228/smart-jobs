@@ -3,7 +3,10 @@ import type { NextConfig } from "next"
 
 const nextConfig: NextConfig = {
   images: {
-    remotePatterns: [new URL('https://novalines-cdn.stellarsolutions.md/smartjobs/**')]
+    remotePatterns: [
+      new URL('https://novalines-cdn.stellarsolutions.md/smartjobs/**'),
+      new URL('https://*.public.blob.vercel-storage.com/**'),
+    ]
   },
   turbopack: {
     resolveAlias: {
