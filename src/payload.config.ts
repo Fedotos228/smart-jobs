@@ -1,11 +1,9 @@
 import { mongooseAdapter } from '@payloadcms/db-mongodb'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import path from 'path'
-import { buildConfig } from 'payload'
 import type { SharpDependency } from 'payload'
+import { buildConfig } from 'payload'
 import _sharp from 'sharp'
-
-const sharp = _sharp as unknown as SharpDependency
 import { fileURLToPath } from 'url'
 import { Areas } from './collections/Areas'
 import { Countries } from './collections/Countries'
@@ -20,6 +18,8 @@ import { FooterGlobal } from './globals/FooterGlobal'
 import { HeroSection } from './globals/HeroSection'
 import { HowWorksSection } from './globals/HowWorksSection'
 import { ProvideSection } from './globals/ProvideSection'
+
+const sharp = _sharp as unknown as SharpDependency
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
